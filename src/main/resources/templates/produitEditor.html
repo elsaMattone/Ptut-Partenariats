@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<!--/* 
+	Le contrôleur transmet trois informations à cette vue :
+		- categories : la liste des catégories pour pouvoir la sélectionner
+		- produits : la liste des catégories à afficher
+		- message : un éventuel message d'erreur ou d'information
+		- produit : le produit a éditer dans le formulaire
+*/-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="../static/css/style.css" />
+	<title>Edition des produits</title>
+	<style>
+		/* Onglets verticaux inspirés de https://codepen.io/nik-savchenko/pen/xDIAe/ */
+		.tabordion {
+			color: #333;
+			position: relative;
+		}
+
+		.tabordion input[name="sections"] {
+			left: -9999px;
+			position: absolute;
+			top: -9999px;
+		}
+
+		.tabordion section {
+			display: block;
+		}
+
+		.tabordion section label {
+			background: #ccc;
+			cursor: pointer;
+			display: block;
+			font-size: 1.2em;
+			font-weight: bold;
+			padding: 15px 20px;
+			position: relative;
+			width: 180px;
+			z-index: 100;
+		}
+
+		.tabordion section article {
+			display: none;
+			left: 230px;
+			min-width: 300px;
+			padding: 0 0 0 21px;
+			position: absolute;
+			top: 0;
+		}
+
+		.tabordion section article:after {
+			background-color: #ccc;
+			bottom: 0;
+			content: "";
+			display: block;
+			left: -229px;
+			position: absolute;
+			top: 0;
+			width: 220px;
+			z-index: 1;
+		}
+
+		.tabordion input[name="sections"]:checked+label {
+			background: #eee;
+			color: #bbb;
+		}
+
+		.tabordion input[name="sections"]:checked~article {
+			display: block;
+		}
+
+
+		@media (max-width: 533px) {
+
+			h1 {
+				width: 100%;
+			}
+
+			.tabordion {
+				width: 100%;
+			}
+
+			.tabordion section label {
+				font-size: 1em;
+				width: 160px;
+			}
+
+			.tabordion section article {
+				left: 200px;
+				min-width: 270px;
+			}
+
+			.tabordion section article:after {
+				background-color: #ccc;
+				bottom: 0;
+				content: "";
+				display: block;
+				left: -199px;
+				position: absolute;
+				top: 0;
+				width: 200px;
+
+			}
+
+		}
+
+
+		@media (max-width: 768px) {
+			h1 {
+				width: 96%;
+			}
+
+			.tabordion {
+				width: 96%;
+			}
+		}
+
+
+		@media (min-width: 1366px) {
+			h1 {
+				width: 70%;
+			}
+
+			.tabordion {
+				width: 70%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!--/* On affiche le message "Ajouter" ou "Modifier" selon qu'on est en mode ajout ou modification */-->
+	<h1><span th:text='${#strings.isEmpty(produit.reference) ? "Ajouter" : "Modifier"}'>Enregistrer</span> un produit</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form th:object="${produit}" method="POST" th:action="@{save}">
+			<div class="column">
+				<label for="reference">Référence:</label>
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<input type="text" th:field="*{reference}" readonly="readonly" placeholder="auto-générée, non modifiable" />
+				<label for="nom">Nom:</label>
+				<input type="text" th:field="*{nom}" placeholder="Nom du produit"/>
+				<!--/* Si la référence est vide, on est en mode création, sinon en mode modification */-->				
+				<input type="submit" value="Enregistrer" th:value='${#strings.isEmpty(produit.reference) ? "Enregistrer un nouveau produit" : "Enregistrer les modifications"}'/>
+				<input type="reset" value="Réinitialiser" />
+				<!--/* On appelle l'URL 'add' du contôleur, pour afficher le formulaire d'ajout */-->
+				<!--/* cf. https://www.thymeleaf.org/doc/articles/standardurlsyntax.html pour la syntaxe des URL Thymeleaf */-->
+				<a th:unless="${#strings.isEmpty(produit.reference)}" href="#" th:href="@{add}">Ajouter un nouveau produit</a>
+			</div>
+			<div class="column">
+				<label for="prixUnitaire">Prix unitaire:</label>
+				<input type="number" min="0.00" max="100.00" step="0.01" th:field="*{prixUnitaire}"/>
+				<label for="quantiteParUnite">Quantité par unité:</label>
+				<input type="text" th:field="*{quantiteParUnite}" placeholder="ex: caisse de 12 boîtes" />				
+				<label for="categorie">Catégorie:</label>
+				<!--/* Une liste de choix pour la catégorie (on saisit la clé étrangère, Spring retrouvera la catégorie concernée) 
+					   cf. https://www.baeldung.com/thymeleaf-select-option */-->
+				<select th:field="*{categorie}" >
+					<!--/* th:each     On parcourt la liste des catégories en mettant une option pour chaque catégorie */-->
+					<!--/* th:value    la valeur de l'option est le code de la catégorie */-->
+					<!--/* th:text     le texte affiché pour l'option est le libellé de la catégorie */-->
+					<!--/* th:selected On détermine quelle doit être l'option sélectionnée dans la liste */-->
+					<option th:each="c : ${categories}"
+						th:value="${c.code}" 
+						th:text="${c.libelle}"
+						th:selected="${c.code == produit.categorie.code}">
+						Produits d'entretien
+					</option>
+				</select>			</div>
+		</form>
+		<h3 th:text="${message}">Message de succès ou d'erreur</h3>		
+		<hr/>		
+		<h1>Liste des produits</h1>
+		<div class="tabordion">
+			<section th:each="cat, ligne: ${categories}" th:id='${"section"+ligne.count}' id="section1">
+			  <input type="radio" name="sections" id="option1" th:id='${"option"+ligne.count}' checked="" th:checked="${cat.code == produit.categorie.code}" />
+			  <label for="option1" th:for='${"option"+ligne.count}' th:text="${cat.libelle}">Produits d'entretien</label>
+			  <article>
+				<h2 th:text="${cat.libelle}">Produits d'entretien</h2>
+				<table>
+					<tr><th>Référence</th><th>Nom</th><th>Indisponible</th><th>Action</th></tr>
+					<!--/* Pour chaque catégorie c dans la liste 'categories' transmise par le contrôleur */-->
+					<tr th:each="p: ${cat.produitList}">
+						<td th:text="${p.reference}">XYZ</td>
+						<td th:text="${p.nom}">Nom du produit</td>
+						<td>
+							<!--/* coché si le produit est disponible */-->
+							<input type="checkbox"
+								th:checked="${p.indisponible}"
+							/>
+						</td>
+						<td>
+							<!--/* On appelle l'URL 'edit' du contôleur, en lui passant en paramètre le code de la catégorie à modifier */-->
+							<!--/* cf. https://www.thymeleaf.org/doc/articles/standardurlsyntax.html pour la syntaxe des URL Thymeleaf */-->					
+							<a th:href="@{edit(reference=${p.reference})}" href='#'>Modifier</a>
+							<!--/* On appelle l'URL 'delete' du contôleur, en lui passant en paramètre le code de la catégorie à modifier */-->
+							<a th:href="@{delete(reference=${p.reference})}" href='#'>Supprimer</a>
+						</td>
+					</tr>
+				</table>			  </article>
+			</section>
+		  </div>
+		<hr/>
+		<a th:href="@{/}" href="../static/index.html">Retour au menu</a>
+	</body>
+</html>
