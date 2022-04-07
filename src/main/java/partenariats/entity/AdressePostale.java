@@ -27,8 +27,8 @@ public class AdressePostale implements Serializable {
 	@Column(length = 15)
 	private String ville;
 
-	@Size(max = 15)
-	@Column(length = 15)
+	@Size(max = 25)
+	@Column(length = 25)
 	private String region;
 
 	@Size(max = 10)

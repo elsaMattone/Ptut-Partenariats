@@ -8,9 +8,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -30,7 +33,7 @@ import lombok.ToString;
 
 @Entity
 // Lombok
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 @XmlRootElement // Pour générer du XML
 public class Contact implements Serializable {
 
@@ -44,30 +47,40 @@ public class Contact implements Serializable {
 
     @Size(max = 30)
 	@Column(length = 30)
+	@NotNull
     private String nom;
 
     @Size(max = 30)
 	@Column(length = 30)
     private String prenom;
 
-    @Size(max = 30)
-	@Column(length = 30)
+    @Size(max = 40)
+	@Column(length = 40)
 	private String mail;
 
     @Size(max = 24)
 	@Column(length = 24)
-    private String telephonePortable;
+	@NonNull
+    private String telFixe;
 
     @Size(max = 24)
 	@Column(length = 24)
-    private String telephoneFixe;
+	@NonNull
+    private String telPortable;
 
-    @Size(max = 30)
-	@Column(length = 30)
+    @Size(max = 40)
+	@Column(length = 40)
     private String fonction;
 
-	@ManyToOne
-    private Partenaire partenaireContact;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="partenaire",referencedColumnName="idPartenaire")
+    private Partenaire partenaire;
+
+	@ManyToMany
+	private List<Etiquette> etiquettes; 
+
+	@ManyToMany
+	private List<Commentaire> commentaires; 
 	
     /*
     @JsonIgnore // Ne pas inclure dans le format JSON

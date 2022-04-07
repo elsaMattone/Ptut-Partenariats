@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,33 +29,61 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter
+@Setter
+@NoArgsConstructor
+@RequiredArgsConstructor
+@ToString
 @XmlRootElement
-public class Etiquette implements Serializable{
+public class Etiquette implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-	@Id 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional = false)
 	@Column(nullable = false)
 	private Integer idEtiquette;
 
 	@Basic(optional = false)
 	@NonNull // lombok
 	@NotNull // Java validation
-	@Size(min = 1, max = 25)
+	@Size(min = 1, max = 40)
 	// Spécifications de la colonne dans la table relationnelle
-	@Column(nullable = false, unique = true, length = 25)
+	@Column(nullable = false, unique = true, length = 40)
 	private String intitule;
 
-    /*@JsonIgnore // Ne pas inclure dans le format JSON
-	@XmlTransient  // Ne pas inclure dans le format XML
-	@ToString.Exclude  // Ne pas inclure dans le toString
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "categorie")
-	private List<Produit> produits;*/
+	@JsonIgnore
+	@XmlTransient
+	@ToString.Exclude
+	@ManyToMany(cascade=CascadeType.MERGE)
+	@JoinTable(name="etiquette_contact", joinColumns = @JoinColumn(name ="idEtiquette"),inverseJoinColumns = @JoinColumn(name="idContact"))
+	private List<Contact> contacts; 
 
-    @Override
+	@JsonIgnore
+	@XmlTransient
+	@ToString.Exclude
+	@ManyToMany(cascade= CascadeType.MERGE)
+	@JoinTable(name="etiquette_partenaire", joinColumns = @JoinColumn(name="idEtiquette"), inverseJoinColumns = @JoinColumn(name="idPartenaire"))
+	private List<Partenaire> partenaires; 
+
+	//@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+    //private Set<Role> roles;
+	
+
+	/*
+	 * @JsonIgnore // Ne pas inclure dans le format JSON
+	 * 
+	 * @XmlTransient // Ne pas inclure dans le format XML
+	 * 
+	 * @ToString.Exclude // Ne pas inclure dans le toString
+	 * 
+	 * @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy =
+	 * "categorie")
+	 * private List<Produit> produits;
+	 */
+
+	@Override
 	public int hashCode() {
 		int hash = 0;
 		hash += (idEtiquette != null ? idEtiquette.hashCode() : 0);
@@ -65,7 +96,7 @@ public class Etiquette implements Serializable{
 			return false;
 		}
 		Etiquette other = (Etiquette) object;
-		return (this.idEtiquette == null && other.idEtiquette == null) || (this.idEtiquette != null && this.idEtiquette.equals(other.idEtiquette));
+		return (this.idEtiquette == null && other.idEtiquette == null)
+				|| (this.idEtiquette != null && this.idEtiquette.equals(other.idEtiquette));
 	}
 }
-    

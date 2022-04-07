@@ -7,10 +7,13 @@ import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -41,19 +44,29 @@ public class Commentaire implements Serializable{
 
 	@Size(max = 255)
 	@Column(length = 255)
+	@NotNull
+	@NonNull
 	private String texte;
 
-    private LocalDate envoyeele;
+    private LocalDate date_Commentaire;
 
     @Size(max = 40)
 	@Column(length = 40)
     private String auteur;
 
-    /*@JsonIgnore // Ne pas inclure dans le format JSON
-	@XmlTransient  // Ne pas inclure dans le format XML
-	@ToString.Exclude  // Ne pas inclure dans le toString
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "categorie")
-	private List<Produit> produits;*/
+	@JsonIgnore
+	@XmlTransient
+	@ToString.Exclude
+	@ManyToMany (cascade= CascadeType.MERGE)
+	@JoinTable(name="commentaire_contact", joinColumns = @JoinColumn(name="idCommentaire"), inverseJoinColumns = @JoinColumn(name="idContact"))
+	private List<Contact> contacts; 
+
+	@JsonIgnore
+	@XmlTransient
+	@ToString.Exclude
+	@ManyToMany(cascade= CascadeType.MERGE)
+	@JoinTable(name="commentaire_partenaire", joinColumns = @JoinColumn(name="idCommentaire"), inverseJoinColumns = @JoinColumn(name="idPartenaire"))
+	private List<Partenaire> partenaires;
 
     @Override
 	public int hashCode() {

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -21,14 +22,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+//import lombok.NonNull;
+//import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @Entity
 //Lombok
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString 
+@Getter @Setter @NoArgsConstructor @ToString 
 @XmlRootElement
 public class Partenaire implements Serializable{
 
@@ -40,6 +41,7 @@ public class Partenaire implements Serializable{
 	@Column(nullable = false)
 	private Integer idPartenaire;
 
+	@NotNull
 	private String raisonSociale;
 
 	@Embedded
@@ -49,16 +51,21 @@ public class Partenaire implements Serializable{
 	@Column(length = 24)
 	private String telephone;
 
-	@Size(max = 30)
-	@Column(length = 30)
+	@Size(max = 40)
+	@Column(length = 40)
 	private String mailPartenaire;
 
 	@JsonIgnore // Ne pas inclure dans le format JSON
 	@XmlTransient  // Ne pas inclure dans le format XML
 	@ToString.Exclude  // Ne pas inclure dans le toString
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "partenaireContact")
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy = "partenaire")
 	private List<Contact> contacts;
 
+	@ManyToMany
+	private List<Etiquette> etiquettes; 
+
+	@ManyToMany
+	private List<Commentaire> commentaires; 
 	  
     @Override
 	public int hashCode() {

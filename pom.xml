@@ -59,7 +59,7 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>	
 		<!-- Pour produire du XML -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
