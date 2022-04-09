@@ -8,39 +8,39 @@
 	<form>
 		<!--/* L'action par défaut est de revenir à l'URL du contrôleur */-->
 		<div class="column">
-			<label for="code">Choisissez la catégorie à afficher</label>
+			<label for="idEtiquette">Choisissez la catégorie à afficher</label>
 			<!--/* Une liste de choix pour le paramètre 'code' -->
-			<select name='code' onchange='this.form.submit()'>
+			<select name='idEtiquette' onchange='this.form.submit()'>
 				<!--/* onchange    quand on change la valeur choisie, on soumet automatiquement le formulaire */-->
-				<option selected="true" disabled="disabled">Choisissez une catégprie</option>
-				{{#categories}}
-					<option value="{{code}}">{{libelle}}</option>
-				{{/categories}}
+				<option selected="true" disabled="disabled">Choisissez une étiquette</option>
+				{{#etiquettes}}
+					<option value="{{idEtiquette}}">{{intitule}}</option>
+				{{/etiquettes}}
 			</select>
 		</div>
 	</form>
-	<h2>Produits dans la catégorie '<em>{{selected.libelle}}</em>'</h2>
+	<h2>Partenaire par étiquette <em>{{selected.intitule}}</em>'</h2>
 	<!--/* On montre la liste des produits dans la catégorie sélectionnée sous la forme d'une table HTML */-->
 	<table>
 		<tr>
-			<th>Référence</th>
 			<th>Nom</th>
-			<th>Prix Unitaire</th>
+			<th>Telephone</th>
+			<th>Mail partenaire</th>
 		</tr>
 		<!--/* Pour chaque produit dans la catégorie sélectionnée */-->
-		{{#selected.produits}}
+		{{#selected.partenaire}}
 			<tr>
-				<td>{{reference}}</td>
-				<td>{{nom}}</td>
-				<td>{{prixUnitaire}}</td>
+				<td>{{raisonSociale}}</td>
+				<td>{{telephone}}</td>
+				<td>{{mailPartenaire}}</td>
 			</tr>
-		{{/selected.produits}}
+		{{/selected.partenaire}}
 		<!--/* Si il n'y a pas de produits dans la catégorie sélectionnée */-->
-		{{^selected.produits}}
+		{{^selected.partenaire}}
 			<tr>
 				<td colspan="3">Aucun produit dans cette catégorie</td>
 			</tr>
-		{{/selected.produits}}
+		{{/selected.partenaire}}
 	</table>
 	<hr/>
 	<a  href="/">Retour au menu</a>

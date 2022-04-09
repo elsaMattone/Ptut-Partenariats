@@ -123,58 +123,57 @@ INSERT INTO Commentaire(ID_Commentaire, Texte, Date_Commentaire, Auteur) VALUES
 	(4001,'Prise de contact au Winter Camp 2022', '2022-02-02', 'Admin'),
 	(4002, 'Toujours présents à tous les événements ', '2022-03-01', 'Admin');
 
-/*INSERT INTO PartenaireEtiquette (ID_PE, Partenaire_etq, Etiquette_Partenaire) VALUES
-	(6001, 1001, 7),
-	(6002, 1001, 10),
-	(6003, 1001, 12),
-	(6004, 1001, 1),
-	(6005, 1002, 8),
-	(6006, 1002, 3),
-	(6007, 1002, 2),
-	(6008, 1002, 10),
-	(6009, 1003, 1),
-	(6010, 1003, 4),
-	(6011, 1003, 8),
-	(6012, 1003, 10),
-	(6013, 1003, 12),
-	(6014, 1004, 1),
-	(6015, 1004, 6),
-	(6016, 1004, 12),
-	(6017, 1005, 6),
-	(6018, 1006, 4),
-	(6019, 1006, 6),
-	(6020, 1006, 12),
-	(6021, 1006, 10),
-	(6022, 1007, 8),
-	(6023, 1007, 10),
-	(6024, 1007, 2),
-	(6025, 1007, 3),
-	(6026, 1007, 12),
-	(6027, 1008, 7),
-	(6028, 1008, 1),
-	(6029, 1008, 4),
-	(6030, 1009, 1),
-	(6031, 1009, 8),
-	(6032, 1009, 10),
-	(6033, 1010, 6),
-	(6034, 1010, 1),
-	(6035, 1010, 2),
-	(6036, 1010, 3),
-	(6037, 1010, 4),
-	(6038, 1010, 5),
-	(6039, 1010, 10),
-	(6040, 1010, 12);
+INSERT INTO Etiquette_partenaire (ID_Etiquette,ID_Partenaire) VALUES
+	(7, 1001),
+	(10, 1001),
+	(12, 1001),
+	(1, 1001 ),
+	(8, 1002 ),
+	(3, 1002 ),
+	(2, 1002 ),
+	(10, 1002),
+	(1, 1003 ),
+	(4, 1003 ),
+	(8, 1003 ),
+	(10, 1003),
+	(12, 1003),
+	(1, 1004 ),
+	(6, 1004 ),
+	(12, 1004),
+	(6, 1005 ),
+	(4, 1006 ),
+	(6, 1006 ),
+	(12, 1006),
+	(10, 1006),
+	(8, 1007 ),
+	(10, 1007),
+	(2, 1007 ),
+	(3, 1007 ),
+	(12, 1007),
+	(7, 1008 ),
+	(1, 1008 ),
+	(4, 1008 ),
+	(1, 1009 ),
+	(8, 1009 ),
+	(10, 1009),
+	(6, 1010 ),
+	(1, 1010 ),
+	(2, 1010 ),
+	(3, 1010 ),
+	(4, 1010 ),
+	(5, 1010 ),
+	(10, 1010),
+	(12, 1010);
 
-INSERT INTO ContactEtiquette (ID_CE, Contact_etq , 	Etiquette_contact) VALUES
-	(8001, 2013, 11);
+INSERT INTO Etiquette_contact (ID_Etiquette, ID_Contact) VALUES
+	(11, 2013);
 
-INSERT INTO PartenaireCommentaire (ID_PC, Partenaire_com, Commentaire_Partenaire ) VALUES
-	(9001, 1001, 4002),
-	(9002, 1010, 4002),
-	(9003, 1007, 4002);
+INSERT INTO Commentaire_partenaire (ID_Commentaire, ID_Partenaire ) VALUES
+	(4001, 1001),
+	(4002, 1010),
+	(4002, 1007);
 
-INSERT INTO ContactCommentaire (ID_CC, Contact_com, Commentaire_Contact) VALUES
-	(11001, 2008, 4002),
-	(11002, 2005, 4002);
+INSERT INTO Commentaire_contact (ID_Commentaire,ID_Contact) VALUES
+	(4002, 2008),
+	(4001, 2005);
 
-*/
