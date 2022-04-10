@@ -1,0 +1,27 @@
+{{>header}}
+<!--/* 
+	Information transmise par le contrôleur :
+	- categorie : la catégorie à editer
+*/-->
+		<h1>Ajouter une étiquette</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form method="post" action="save">
+			<div class="column">
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<label for="id">Id:</label>
+				<input type="text" name="id" 
+					{{#etiquette.idEtiquette}} value="{{etiquette.idEtiquette}}" {{/etiquette.idEtiquette}}
+					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+				<label for="intitule">Intitule</label>
+				<input type="text" name="intitule" 
+					{{#etiquette.intitule}} value="{{etiquette.intitule}}" {{/etiquette.intitule}}
+					placeholder="intitule de l'étiquette"/>	
+			</div>
+		</form>		
+		<hr/>
+		<a href="/">Retour au menu</a>
+			
+{{>footer}}

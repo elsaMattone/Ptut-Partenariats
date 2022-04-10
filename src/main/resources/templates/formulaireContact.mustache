@@ -1,0 +1,47 @@
+{{>header}}
+<!--/* 
+	Information transmise par le contrôleur :
+	- categorie : la catégorie à editer
+*/-->
+		<h1>Ajouter un contact</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form method="post" action="save">
+			<div class="column">
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<label for="code">Id:</label>
+				<input type="text" name="code" 
+					{{#contact.idContact}} value="{{contact.idContact}}" {{/contact.idContact}}
+					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+				<label for="nom">Nom :</label>
+				<input type="text" name="nom" 
+					{{#contact.nom}} value="{{contact.nom}}" {{/contact.nom}}
+					/>				
+				<label for="prenom">Prénom :</label>
+				<input type="text" name="prenom"
+					{{#contact.prenom}} value="{{contact.prenom}}" {{/contact.prenom}}
+					/>
+				<label for="description">Mail :</label>
+				<input type="text" name="description"
+					{{#contact.mail}} value="{{contact.mail}}" {{/contact.mail}}
+					/>
+				<label for="tel-fixe">Téléphone fixe:</label>
+				<input type="tel" name="tel-fixe"
+					{{#contact.telFixe}} value="{{contact.telFixe}}" {{/contact.telFixe}}
+					/>
+				<label for="tel-portable">Téléphone portable:</label>
+				<input type="tel" name="tel-portable"
+					{{#contact.telPortable}} value="{{contact.telPortable}}" {{/contact.telPortable}}
+					/>
+				<label for="fonction">Fonction :</label>
+				<input type="texte" name="fonction"
+					{{#contact.fonction}} value="{{contact.fonction}}" {{/contact.fonction}}
+					/>
+			</div>
+		</form>		
+		<hr/>
+		<a href="/">Retour au menu</a>
+			
+{{>footer}}

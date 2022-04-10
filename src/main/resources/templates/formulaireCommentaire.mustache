@@ -1,0 +1,35 @@
+{{>header}}
+<!--/* 
+	Information transmise par le contrôleur :
+	- categorie : la catégorie à editer
+*/-->
+		<h1>Ajouter un commentaire</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form method="post" action="save">
+			<div class="column">
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<label for="code">Id:</label>
+				<input type="text" name="code" 
+					{{#commentaire.idCommentaire}} value="{{commentaire.idCommentaire}}" {{/commentaire.idCommentaire}}
+					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+				<label for="texte">Texte</label>
+				<input type="text" name="texte" 
+					{{#commentaire.texte}} value="{{commentaire.texte}}" {{/commentaire.texte}}
+					/>				
+				<label for="description">Date:</label>
+				<input type="date" name="description"
+					{{#commentaire.date_Commentaire}} value="{{commentaire.date_Commentaire}}" {{/commentaire.date_Commentaire}}
+					/>
+				<label for="auteur">Auteur :</label>
+				<input type="text" name="auteur"
+					{{#commentaire.telephone}} value="{{commentaire.telephone}}" {{/commentaire.telephone}}
+					/>
+			</div>
+		</form>		
+		<hr/>
+		<a href="/">Retour au menu</a>
+			
+{{>footer}}
