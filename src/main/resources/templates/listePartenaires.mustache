@@ -1,11 +1,11 @@
 
 {{>header}}
 		<h1>Liste des partenaires</h1>
-		<!--<a href='add'>Ajouter une étiquette</a>-->
+		<a href='add'>Ajouter un partenaire</a>
 		
 		{{#message}}<h3>{{message}}</h3>{{/message}}				
 		<table>
-			<tr><th>ID</th><th>Raison sociale</th><th>Adresse</th><th>Téléphone</th><th>Mail</th><th>Contact au sein de la structure</th></tr>
+			<tr><th>ID</th><th>Raison sociale</th><th>Adresse</th><th>Téléphone</th><th>Mail</th><th>Contact au sein de la structure</th><th>Action</th></tr>
 			{{#partenaires}}
 				<tr>					
 					<td>{{idPartenaire}}</td>
@@ -14,7 +14,10 @@
 					<td>{{telephone}}</td>
 					<td>{{mailPartenaire}}</td>
 					<td>{{contacts}}</td>					
-					
+					<td>
+						<a href='edit?idPartenaire={{idPartenaire}}'>Modifier</a> 
+						<a href='delete?idPartenaire={{idPartenaire}}'>Supprimer</a>
+					</td>
 				</tr>
 			{{/partenaires}}
 		</table>

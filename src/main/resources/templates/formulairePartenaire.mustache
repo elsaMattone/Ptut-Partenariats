@@ -1,0 +1,39 @@
+{{>header}}
+<!--/* 
+	Information transmise par le contrôleur :
+	- categorie : la catégorie à editer
+*/-->
+		<h1>Ajouter un partenaire</h1>
+		<!--/* Au revient au contrôleur, avec la méthode POST */-->
+		<form method="post" action="save">
+			<div class="column">
+				<!--/* th:field définit quel champ de l'objet est édité par cette zone de saisie */-->
+				<label for="code">Id:</label>
+				<input type="text" name="code" 
+					{{#partenaire.idPartenaire}} value="{{partenaire.idPartenaire}}" {{/partenaire.idPartenaire}}
+					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
+			</div>
+			<div class="column">
+				<label for="raison-sociale">Raison sociale</label>
+				<input type="text" name="raison-sociale" 
+					{{#partenaire.rasionSociale}} value="{{partenaire.rasionSociale}}" {{/partenaire.rasionSociale}}
+					placeholder="Nom de l'entreprise"/>				
+				<label for="description">Adresse:</label>
+				<input type="text" name="description"
+					{{#partenaire.adresse}} value="{{partenaire.adresse}}" {{/partenaire.adresse}}
+					placeholder="Adresse"/>
+				<label for="description">Téléphone:</label>
+				<input type="text" name="description"
+					{{#partenaire.telephone}} value="{{partenaire.telephone}}" {{/partenaire.telephone}}
+					placeholder="Adresse"/>
+				<label for="description">Mail:</label>
+				<input type="text" name="description"
+					{{#partenaire.mailPartenaire}} value="{{partenaire.mailPartenaire}}" {{/partenaire.mailPartenaire}}
+					placeholder="Adresse"/>
+			</div>
+		</form>		
+		<hr/>
+		<a href="/">Retour au menu</a>
+			
+{{>footer}}
