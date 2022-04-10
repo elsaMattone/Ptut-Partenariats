@@ -1,0 +1,26 @@
+
+{{>header}}
+		<h1>Liste des contacts</h1>
+		<!--<a href='add'>Ajouter une étiquette</a>-->
+		{{#message}}<h3>{{message}}</h3>{{/message}}				
+		<table>
+			<tr><th>ID</th><th>Nom</th><th>Prenom</th><th>Mail</th><th>Tel Fixe</th><th>Tel Portable</th><th>Fonction</th><th>Appartenance</th></tr>
+			{{#contacts}}
+				<tr>
+					<td>{{idContact}}</td>
+					<td>{{nom}}</td>
+					<td>{{prenom}}</td>
+					<td>{{mail}}</td>
+					<td>{{telFixe}}</td>
+					<td>{{telPortable}}</td>
+					<td>{{fonction}}</td>
+					<td>{{partenaire}}</td>					
+				</tr>
+			{{/contacts}}
+		</table>		
+
+		<hr/>
+		<a href="/">Retour au menu</a>
+		<hr/>							
+	</body>
+</html>

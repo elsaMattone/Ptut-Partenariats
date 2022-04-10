@@ -29,7 +29,7 @@ public class EtiquetteController {
 	@GetMapping(path = "show")
 	public	String afficheToutesLesEtiquettes(Model model) {
 		model.addAttribute("etiquettes", dao.findAll());
-		return "showEtiquettes";
+		return "listeEtiquettes";
 	}	
 		
 	/**
@@ -62,15 +62,15 @@ public class EtiquetteController {
 	 * @return une redirection vers l'affichage de la liste des catégories
 	 */
 	@PostMapping(path = "save")
-	public String ajouteLaEtiquettePuisMontreLaListe(Etiquette etiquette) {
+	public String ajouteLaEtiquettePuisMontreLaListe(Etiquette etiquette, RedirectAttributes redirectInfo) {
 		String message;
 		try{
 			dao.save(etiquette);
-			message = "L'étiquette a bien été enregistrée";
+			message = "L'étiquette a bien été enregistrée !";
 		}catch (DataIntegrityViolationException e){
 			message = "ERREUR : l'étiquette " + etiquette.getIntitule() + "existe déjà !";
 		}
-		//redirectInfo.addFlashAttribute("message", message);
+		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; 
 	}
 	/**
@@ -80,15 +80,15 @@ public class EtiquetteController {
 	 * @return une redirection vers l'affichage de la liste des catégories
 	 */
 	@GetMapping(path = "delete")
-	public String supprimeUneEtiquettePuisMontreLaListe(@RequestParam("idEtiquette") Etiquette etiquette) {
+	public String supprimeUneEtiquettePuisMontreLaListe(@RequestParam("idEtiquette") Etiquette etiquette, RedirectAttributes redirectInfo) {
 		String message;
 		try{
 			dao.delete(etiquette); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)
-			message = "L'étiquette n'a pas été suppprimée";
+			message = "L'étiquette a été suppprimée";
 		}catch(DataIntegrityViolationException e){
-			message = "ERREUR : Impossible de supprimerl'étiquette !";
+			message = "ERREUR : Impossible de supprimer l'étiquette !";
 		}
-		//redirectInfo.addFlashAttribute("message", message);
+		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; // on se redirige vers l'affichage de la liste
 	}
 }

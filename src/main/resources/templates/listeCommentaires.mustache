@@ -1,0 +1,22 @@
+
+{{>header}}
+		<h1>Liste des commentaires</h1>		
+		{{#message}}<h3>{{message}}</h3>{{/message}}				
+		<table>
+			<tr><th>ID</th><th>Contenu</th><th>Auteur</th><th>Date</th></tr>			
+			{{#commentaires}}
+				<tr>					
+					<td>{{idCommentaire}}</td>
+					<td>{{texte}}</td>
+					<td>{{auteur}}</td>
+					<td>{{date_Commentaire}}</td>				
+					
+				</tr>
+			{{/commentaires}}
+		</table>
+
+		<hr/>
+		<a href="/">Retour au menu</a>
+		<hr/>							
+	</body>
+</html>

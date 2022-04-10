@@ -1,0 +1,25 @@
+
+{{>header}}
+		<h1>Liste des partenaires</h1>
+		<!--<a href='add'>Ajouter une étiquette</a>-->
+		
+		{{#message}}<h3>{{message}}</h3>{{/message}}				
+		<table>
+			<tr><th>ID</th><th>Raison sociale</th><th>Adresse</th><th>Téléphone</th><th>Mail</th><th>Contact au sein de la structure</th></tr>
+			{{#partenaires}}
+				<tr>					
+					<td>{{idPartenaire}}</td>
+					<td>{{raisonSociale}}</td>
+					<td>{{adresse}}</td>
+					<td>{{telephone}}</td>
+					<td>{{mailPartenaire}}</td>
+					<td>{{contacts}}</td>					
+					
+				</tr>
+			{{/partenaires}}
+		</table>
+		<hr/>
+		<a href="/">Retour au menu</a>
+		<hr/>							
+	</body>
+</html>

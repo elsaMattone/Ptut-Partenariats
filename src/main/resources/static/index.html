@@ -1,27 +1,26 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Les Comptoirs</title>
+        <title>Application Web Partenariats</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="icon" href="annuaire.ico">
         <link rel="stylesheet" type="text/css" href="css/style.css"/>	
     </head>
     <body>
-        <h1>Les Comptoirs - Spring MVC</h1>
+        <h1>Annuaire ISIS</h1>
+        <nav>
+            <a href="Lannuaire.html"><input type ="button" value ="Consulter l'Annuaire"></a><br/>
+            <a href="Mannuaire.html"><input type ="button" value ="Modifier l'Annuaire"></a>
+        </nav>
         <ul>
-            <li>Contrôleur simple (sans vue)
+            <li>Liste de tous les élements
                 <ul>
-                    <li><a href="comptoirs/simple/list">Liste des catégories (XML)</a></li>
-                    <li><a href="comptoirs/simple/combien">Combien de catégories ? (HTML)</a></li>
-                    <li><a href="comptoirs/simple/ajouter?libelle=essai">Ajouter une catégorie (XML)</a></li>
+                    <li><a href="partenariats/partenaire/show">Liste des partenaire</a></li>
+                    <li><a href="partenariats/contact/show">Liste des contacts</a></li>
+                    <li><a href="partenariats/etiquette/show">Liste des étiquettes</a></li>
+                    <li><a href="partenariats/commentaire/show">Liste des commentaires</a></li>
                 </ul>
-            </li>
-            <li>Exemples MVC
-                <ul>
-                    <li><a href="partenariats/etiquette/show">Edition des catégories sans gestion des erreurs</a></li>
-                    <li><a href="comptoirs/categorieWithErrorChecking/show">Edition des catégories avec gestion des erreurs</a></li>				
-                    <li><a href="partenariats/etiquette/partenaires">Liste des produits par catégorie</a></li>
-                </ul>
-            </li>
+            </li>            
             <li><a href="h2-console" target="_blank">Console d'administration de la base de données H2 (URL jdbc:h2:mem:testdb)</a></li>
         </ul>
     </body>
