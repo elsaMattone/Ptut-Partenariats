@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Formulaire</title>
+        <meta charset="UTF-8"/>
+    </head>
+    
+    <body>
+        <div>
+            <label for="type">Type de Contact:</label>
+            <input type="text" id="type" name="type" placeholder="Le type d'origine">
+        </div>
+        <br/>
+        <br/>
+        <div>
+            <label for="nom">Nom:</label>
+            <input type="text" id="name" name="nom" placeholder="Le nom d'origine">
+        </div>
+        <br/>
+        <br/>
+        <a href="ModifAnnuaire.html"><input type ="button" class="button" value ="Modifier"></a>
+    </body>
+
+    <style>
+        body{
+            background-color: #10B0F3;
+            padding-left: 35%;
+            padding-top: 15%;
+        }
+
+        .button{
+            border-radius: 12px;
+            margin-left: 17%;
+            background-color: #686868;
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #686868;
+        }
+
+        #type{
+            border-radius: 12px;
+            margin-left: 3%;
+            width: 30%;
+        }
+
+        #name{
+            border-radius: 12px;
+            margin-left: 3%;
+            width: 30%;
+        }
+    </style>
+</html>

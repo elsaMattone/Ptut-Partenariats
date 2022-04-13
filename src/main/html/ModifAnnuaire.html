@@ -1,0 +1,102 @@
+
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Modifier l'Annuaire</title>
+        <meta charset="UTF-8"/>
+    </head>
+    
+    <body>
+        <h1>Annuaire</h1>
+        <a href="FormulaireAjout.html"><input type ="button" id="button1" value ="Ajouter"></a><br>
+        <input id="searchbar" type="text" name="search" placeholder="Mot Clé">
+        <input type ="button" class="button" value ="Filtrer"><br/>
+        <table>
+            <thead>
+                <td>Nom de l'entreprise</td>
+                <td>Adresse Mail</td>
+                <td>Nom des contacts</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Adobe<a href="FormulaireModif.html"><input type ="button" class="button" value ="Modifier"></a></td>
+                    <td>Adobe.fr@gmail.com</td>
+                    <td>Jean Touille<a href="FormulaireModifContact.html"><input type ="button" class="button" value ="ModifierContact"></a></td>
+                    <td><input type ="button" class="button" value ="Supprimer"></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+
+    <style>
+        body{
+            background-color: #10B0F3;
+            padding-left: 2%;
+            padding-top: 0,3%;
+        }
+
+        h1 {
+            font-size: 600%;
+            font-family: 'Times New Roman', Times, serif;
+            color: #686868;
+            padding-left: 30%;
+        }
+
+        div{
+            margin-left: 20%;
+        }
+
+        #searchbar{
+            border-radius: 12px;
+            margin-left: 35%;
+        }
+
+        #button1{
+            border-radius: 12px;
+            margin-left: 31%;
+            width: 30%;
+            background-color: #686868;
+            transition-duration: 0.4s;
+        }
+
+        #button1:hover{
+            background-color: white;
+            color: black;
+            border: 2px solid #686868;
+        }
+
+        .button{
+            border-radius: 12px;
+            margin-left: 3%;
+            background-color: #686868;
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #686868;
+        }
+
+        table{
+            margin-left: 24%;
+            margin-top: 2%;
+            background-color: azure;
+        }
+
+        td, th {
+	        border: 3px solid #686868;
+	        padding: 8px;
+        }
+
+        tr:nth-child(even){background-color: #f2f2f2;}
+
+        thead {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #10B0F3;
+            color: black;
+        }
+    </style>
+</html>

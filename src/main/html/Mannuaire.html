@@ -1,0 +1,65 @@
+
+<!DOCTYPE html >
+<html>
+    <head>
+        <title>Connexion à l'Annuaire</title>
+        <meta charset="UTF-8"/>
+    </head>
+    
+    <body>
+        <h1>Annuaire ISIS</h1>
+        <br/>
+        <div>
+            <label for="id">Identifiant:</label>
+            <input type="text" id="id" name="Identifiant">
+        </div>
+        <br/>
+        <div>
+            <label for="mdp">Mot de Passe:</label>
+            <input type="password" id="mdp" name="Mot de Passe">
+        </div>
+        <br/>
+        <br/>
+        <a href="ModifAnnuaire.html"><input type="submit" class="button" value="Se connecter"></a>
+    </body>
+
+    <style>
+        body{
+            background-color: #10B0F3;
+            padding-left: 25%;
+            padding-top: 2%;
+        }
+
+        h1 {
+            font-size: 600%;
+            font-family: 'Times New Roman', Times, serif;
+            color: #686868;
+        }
+
+        div{
+            margin-left: 20%;
+        }
+
+        #id{
+            border-radius: 12px;
+        }
+
+        #mdp{
+            border-radius: 12px;
+        }
+
+        .button{
+            border-radius: 12px;
+            margin-left: 7%;
+            width: 50%;
+            background-color: #686868;
+            transition-duration: 0.4s;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: black;
+            border: 2px solid #686868;
+        }
+    </style>
+</html>
