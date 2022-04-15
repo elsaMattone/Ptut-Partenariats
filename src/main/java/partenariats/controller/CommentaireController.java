@@ -40,8 +40,22 @@ public class CommentaireController {
 		model.addAttribute("commentaire", commentaire);
 		return "formulaireCommentaire";
 	}
-        
+
 	@PostMapping(path = "save")
+	public String ajouteUnCommentairePuisMontreLaListe(Commentaire commentaire) {
+		
+		dao.save(commentaire);
+		
+		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+	}
+
+	@GetMapping(path = "delete")
+	public String supprimeUneCategoriePuisMontreLaListe(@RequestParam("idCommentaire") Commentaire commentaire) {
+		dao.delete(commentaire); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)		
+		return "redirect:show"; // on se redirige vers l'affichage de la liste
+	}
+        
+	/*@PostMapping(path = "save")
 	public String ajouteUnCommentairePuisMontreLaListe(Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
@@ -52,9 +66,11 @@ public class CommentaireController {
 		}
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
-	}	
+	}	*/
 
-	@GetMapping(path = "delete")
+
+
+	/*@GetMapping(path = "delete")
 	public String supprimeUneCategoriePuisMontreLaListe(@RequestParam("idCommentaire") Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
@@ -65,5 +81,5 @@ public class CommentaireController {
 		}
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; // on se redirige vers l'affichage de la liste
-	}
+	}*/
 }

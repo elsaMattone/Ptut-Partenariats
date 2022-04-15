@@ -9,7 +9,11 @@
 					<td>{{idCommentaire}}</td>
 					<td>{{texte}}</td>
 					<td>{{auteur}}</td>
-					<td>{{date_Commentaire}}</td>				
+					<td>{{date_Commentaire}}</td>	
+					<td>
+						<a href='edit?idCommentaire={{idCommentaire}}'>Modifier</a> 
+						<a href='delete?idCommentaire={{idCommentaire}}'>Supprimer</a>
+					</td>			
 					
 				</tr>
 			{{/commentaires}}

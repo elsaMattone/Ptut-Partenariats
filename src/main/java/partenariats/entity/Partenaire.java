@@ -46,6 +46,7 @@ public class Partenaire implements Serializable{
 
 	@Embedded
 	private AdressePostale adresse;
+	/* faire sans adresse postale  pbm à l'affichage */
 
 	@Size(max = 24)
 	@Column(length = 24)

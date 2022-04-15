@@ -8,7 +8,7 @@
 	<form>
 		<!--/* L'action par défaut est de revenir à l'URL du contrôleur */-->
 		<div class="column">
-			<label for="idEtiquette">Choisissez la catégorie à afficher</label>
+			<label for="idEtiquette">Choisissez l'étiquette à afficher</label>
 			<!--/* Une liste de choix pour le paramètre 'code' -->
 			<select name='idEtiquette' onchange='this.form.submit()'>
 				<!--/* onchange    quand on change la valeur choisie, on soumet automatiquement le formulaire */-->
@@ -44,11 +44,5 @@
 	</table>
 	<hr/>
 	<a  href="/">Retour au menu</a>
-	<hr/>
-	<h3>Code source</h3>
-	<ul>
-		<li><a href="https://bitbucket.org/rbastide/comptoirsspringmvc/src/master/src/main/java/comptoirs/entity/Categorie.java"                      target="_blank">Le modèle (une catégorie)</a></li>
-		<li><a href="https://bitbucket.org/rbastide/comptoirsspringmvc/src/master/src/main/resources/templates/categorieProduits.mustache"                target="_blank">Cette vue</a></li>
-		<li><a href="https://bitbucket.org/rbastide/comptoirsspringmvc/src/master/src/main/java/comptoirs/controller/CategorieProduitController.java" target="_blank">Le contrôleur</a></li>
-	</ul>			
+			
 {{>header}}

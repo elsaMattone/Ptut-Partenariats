@@ -37,12 +37,12 @@ form:after{
 
 /* FORM STUFF BEGINS HERE */
 form{
-	font-size:110%
+	font-size:100%;
 }
 
 label{
 	display:block;
-	color:saddlebrown;
+	color:#686868;
 	margin: 5px 0 3px;
 }
 
@@ -62,7 +62,7 @@ select{
 	padding:10px;
 	box-sizing:border-box;
 	background-color: #f2f2f2;	
-	border: solid 1px tan;
+	border: solid 2px #10B0F3;
 }
 
 textarea{
@@ -74,12 +74,12 @@ fieldset{
 	border:none;
 	margin:20px 0 ;
 	padding:10px 0;
-	border-bottom: 1px solid tan;
+	border-bottom: 2px solid #10B0F3;
 }
 
 legend{
 	color:white;
-	background-color:tan;
+	background-color:#10B0F3;
 	display:block;
 	width:100%;
 	padding:3px;
@@ -100,7 +100,7 @@ input[type=submit]{
 	padding-right:12px;
 	border-radius:10px;
 	text-align:left;
-	background-color: #4CAF50;
+	background-color: #10b0f3;
 	color: white;
 	border:none;
 }
@@ -111,7 +111,7 @@ input[type=reset]{
 	text-decoration:underline;
 	cursor:pointer;
 	margin:20px 0;
-	color:olive;
+	color: #686868;
 }
 
 /* hovers and tabs */
@@ -125,5 +125,5 @@ input[type=email]:focus{
 }
 input[type=sumbit]:hover,
 input[type=submit]:focus{
-	background-color:limegreen;
+	background: color #10b0f3;
 }
