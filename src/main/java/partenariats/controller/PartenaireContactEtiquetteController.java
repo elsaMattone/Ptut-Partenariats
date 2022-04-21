@@ -14,7 +14,7 @@ import partenariats.entity.Etiquette;
 
 @Controller
 @RequestMapping(path="/partenariats/etiquette/partenaire")
-public class PartenaireEtiquetteController {
+public class PartenaireContactEtiquetteController {
     
     @Autowired
     private EtiquetteRepository dao;
@@ -27,6 +27,6 @@ public class PartenaireEtiquetteController {
         }
         model.addAttribute("etiquettes", lesEtiquettes);
         model.addAttribute("selected", etiquette);
-        return "etiquettePartenaire";
+        return "etiquettePartenaireContact";
     }
 }

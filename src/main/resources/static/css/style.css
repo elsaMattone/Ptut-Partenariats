@@ -1,13 +1,17 @@
 body{
-	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;	
+	font-family: Malgun Gothic Semilight, Arial, Helvetica, sans-serif;	
+}
+
+h1{
+	color: #10b0f3;
 }
 
 table {
 	background-color: azure;
+	border-collapse: collapse;	
 }
 
-td, th {
-	border: 3px solid #686868;
+td, th {	
 	padding: 8px;
 }
 
@@ -18,7 +22,7 @@ th {
 	padding-bottom: 12px;
 	text-align: left;
 	background-color: #10B0F3;
-	color: black;
+	color: black;	
 }
 
 .column{
@@ -56,6 +60,7 @@ fieldset label{
 input[type=text],
 input[type=email],
 input[type=tel],
+input[type=date],
 textarea,
 select{
 	width:100%;
@@ -93,6 +98,16 @@ input[type=checkbox]{
 }
 
 /* BUTTONS */
+input[type=button]{
+	background-color: #cbefffe0; 
+	border: #cbefffe0 ;
+	border-radius: 5%;
+	margin-top: 5px;
+	margin-bottom: 3px;
+	height: 30px;
+	color: #393a3a;
+}
+
 input[type=submit]{
 	padding-top:12px;
 	padding-bottom:12px;
@@ -116,12 +131,16 @@ input[type=reset]{
 
 /* hovers and tabs */
 input[type=text]:hover,
-input[type=email]:hover{
-	background-color:khaki;
+input[type=email]:hover,
+input[type=tel]:hover,
+input[type=date]:hover{
+	background-color:#98ddfae0;
 }
 input[type=text]:focus,
-input[type=email]:focus{
-	outline: 2px solid tan;
+input[type=email]:focus,
+input[type=tel]:focus,
+input[type=date]:focus{
+	outline: 2px solid #cbefffe0;
 }
 input[type=sumbit]:hover,
 input[type=submit]:focus{

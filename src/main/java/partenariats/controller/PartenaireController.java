@@ -21,6 +21,9 @@ public class PartenaireController {
     @Autowired
 	private PartenaireRepository dao;
 
+	public PartenaireController(PartenaireRepository dao){
+		this.dao=dao;
+	}
 	
 	@GetMapping(path = "show")
 	public	String afficheToutesLesPartenaires(Model model) {
@@ -37,7 +40,20 @@ public class PartenaireController {
 	public String montreLeFormulairePourEdition(@RequestParam("idPartenaire") Partenaire partenaire, Model model) {
 		model.addAttribute("partenaire", partenaire);
 		return "formulairePartenaire";
-	}        
+	}
+	
+	/*
+	@PostMapping(path = "save")
+	public String ajouteLaPartenairePuisMontreLaListe(Partenaire partenaire) {
+		dao.save(partenaire);		
+		return "redirect:/partenariats/partenaire/show"; 
+	}
+	
+	@GetMapping(path = "delete")
+	public String supprimeUnePartenairePuisMontreLaListe(@RequestParam("idPartenaire") Partenaire partenaire) {
+		dao.delete(partenaire);// Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)		
+		return "redirect:/partenariats/partenaire/show"; // on se redirige vers l'affichage de la liste
+	}*/
 	
 	@PostMapping(path = "save")
 	public String ajouteLaPartenairePuisMontreLaListe(Partenaire partenaire, RedirectAttributes redirectInfo) {
@@ -49,7 +65,7 @@ public class PartenaireController {
 			message = "ERREUR : le partenaire " + partenaire.getRaisonSociale() + "existe déjà !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; 
+		return "redirect:partenariats/partenaire/show"; 
 	}
 	
 	@GetMapping(path = "delete")
@@ -62,7 +78,7 @@ public class PartenaireController {
 			message = "ERREUR : Impossible de supprimer le partenaire !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; // on se redirige vers l'affichage de la liste
+		return "redirect:partenariats/partenaire/show"; // on se redirige vers l'affichage de la liste
 	}
     
 }

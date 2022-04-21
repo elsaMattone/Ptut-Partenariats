@@ -11,10 +11,7 @@
 				<label for="code">Id:</label>
 				<input type="text" name="code" 
 					{{#partenaire.idPartenaire}} value="{{partenaire.idPartenaire}}" {{/partenaire.idPartenaire}}
-					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
-				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
-			</div>
-			<div class="column">
+					readonly="readonly" placeholder="auto-généré, nom modifiable"/>			
 				<label for="raison-sociale">Raison sociale</label>
 				<input type="text" name="raison-sociale" 
 					{{#partenaire.raisonSociale}} value="{{partenaire.raisonSociale}}" {{/partenaire.raisonSociale}}
@@ -23,6 +20,22 @@
 				<input type="text" name="adresse"
 					{{#partenaire.adresse}} value="{{partenaire.adresse}}" {{/partenaire.adresse}}
 					placeholder="Adresse"/>
+				<label for="ville">Ville:</label>
+				<input type="text" name="ville"
+					{{#partenaire.ville}} value="{{partenaire.ville}}" {{/partenaire.ville}}
+					placeholder="Ville"/>
+				<label for="region">Région :</label>
+				<input type="text" name="region"
+					{{#partenaire.region}} value="{{partenaire.region}}" {{/partenaire.region}}
+					placeholder="Région"/>
+				<label for="code-postal">Code postal :</label>
+				<input type="text" name="code-postal"
+					{{#partenaire.codePostal}} value="{{partenaire.codePostal}}" {{/partenaire.codePostal}}
+					placeholder="Code postal"/>
+				<label for="pays">Pays :</label>
+				<input type="text" name="pays"
+					{{#partenaire.pays}} value="{{partenaire.pays}}" {{/partenaire.pays}}
+					placeholder="Pays"/>				
 				<label for="tel">Téléphone:</label>
 				<input type="tel" name="tel"
 					{{#partenaire.telephone}} value="{{partenaire.telephone}}" {{/partenaire.telephone}}
@@ -31,6 +44,8 @@
 				<input type="email" name="mail"
 					{{#partenaire.mailPartenaire}} value="{{partenaire.mailPartenaire}}" {{/partenaire.mailPartenaire}}
 					placeholder="Adresse"/>
+				
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
 			</div>
 		</form>		
 		<hr/>

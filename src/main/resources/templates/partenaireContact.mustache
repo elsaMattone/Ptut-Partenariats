@@ -1,48 +1,47 @@
-<!--/* 
-	Deux informations transmises par le contrôleur :
-	selected   : la catégorie sélectionnée
-	categories : la liste des catégories
-*/-->
+
 {{! On insère l'en-tête de page }}
 {{>header}}
 	<form>
-		<!--/* L'action par défaut est de revenir à l'URL du contrôleur */-->
+		
 		<div class="column">
-			<label for="idPartenaire">Choisissez l'étiquette à afficher</label>
-			<!--/* Une liste de choix pour le paramètre 'code' -->
+			<label for="idPartenaire">Partenaire à afficher: </label>
+			
 			<select name='idPartenaire' onchange='this.form.submit()'>
-				<!--/* onchange    quand on change la valeur choisie, on soumet automatiquement le formulaire */-->
-				<option selected="true" disabled="disabled">Choisissez une étiquette</option>
+			
 				{{#partenaires}}
 					<option value="{{idPartenaire}}">{{raisonSociale}}</option>
 				{{/partenaires}}
 			</select>
 		</div>
 	</form>
-	<h2>Contact par partenaire <em>{{selected.raisonSociale}}</em>'</h2>
-	<!--/* On montre la liste des produits dans la catégorie sélectionnée sous la forme d'une table HTML */-->
+	<h2>Contact par partenaire <em>{{selected.raisonSociale}}</em></h2>
+	
 	<table>
 		<tr>
 			<th>Nom</th>
+			<th>Prénom</th>
 			<th>Telephone Fixe</th>
 			<th>Telephone Portable</th>
-			<th>Mail partenaire</th>
+			<th>Mail</th>
+			<th>Fonction</th>
 		</tr>
-		<!--/* Pour chaque produit dans la catégorie sélectionnée */-->
-		{{#selected.contact}}
+		
+		{{#selected.contacts}}
 			<tr>
 				<td>{{nom}}</td>
+				<td>{{prenom}}</td>
 				<td>{{telFixe}}</td>
 				<td>{{telPortable}}</td>
 				<td>{{mail}}</td>
+				<td>{{fonction}}</td>					
 			</tr>
-		{{/selected.contact}}
-		<!--/* Si il n'y a pas de produits dans la catégorie sélectionnée */-->
-		{{^selected.contact}}
+		{{/selected.contacts}}
+		
+		{{^selected.contacts}}
 			<tr>
 				<td colspan="3">Aucun produit dans cette catégorie</td>
 			</tr>
-		{{/selected.contact}}
+		{{/selected.contacts}}
 	</table>
 	<hr/>
 	<a  href="/">Retour au menu</a>

@@ -54,8 +54,8 @@ public class Contact implements Serializable {
 	@Column(length = 30)
     private String prenom;
 
-    @Size(max = 40)
-	@Column(length = 40)
+    @Size(max = 50)
+	@Column(length = 50, name="mail")
 	private String mail;
 
     @Size(max = 24)
@@ -81,13 +81,6 @@ public class Contact implements Serializable {
 
 	@ManyToMany
 	private List<Commentaire> commentaires; 
-	
-    /*
-    @JsonIgnore // Ne pas inclure dans le format JSON
-	@XmlTransient  // Ne pas inclure dans le format XML
-	@ToString.Exclude  // Ne pas inclure dans le toString	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
-	//private List<Commande> commandes;*/
 
     @Override
 	public int hashCode() {

@@ -1,15 +1,15 @@
 
 {{>header}}
-		<h1>Liste des commentaires</h1>		
+		<h1>Liste des commentaires</h1>
+		<a href='add'><input type ="button" value ="Ajouter un commentaire"></a>		
 		{{#message}}<h3>{{message}}</h3>{{/message}}				
 		<table>
-			<tr><th>ID</th><th>Contenu</th><th>Auteur</th><th>Date</th></tr>			
+			<tr><th>Contenu</th><th>Auteur</th><th>Date</th><th>Action</th></tr>			
 			{{#commentaires}}
-				<tr>					
-					<td>{{idCommentaire}}</td>
+				<tr>			
 					<td>{{texte}}</td>
 					<td>{{auteur}}</td>
-					<td>{{date_Commentaire}}</td>	
+					<td>{{#date_Commentaire}} {{.}} {{/date_Commentaire}}</td>	
 					<td>
 						<a href='edit?idCommentaire={{idCommentaire}}'>Modifier</a> 
 						<a href='delete?idCommentaire={{idCommentaire}}'>Supprimer</a>

@@ -12,9 +12,7 @@
 				<input type="text" name="code" 
 					{{#contact.idContact}} value="{{contact.idContact}}" {{/contact.idContact}}
 					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
-				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
-			</div>
-			<div class="column">
+							
 				<label for="nom">Nom :</label>
 				<input type="text" name="nom" 
 					{{#contact.nom}} value="{{contact.nom}}" {{/contact.nom}}
@@ -36,9 +34,11 @@
 					{{#contact.telPortable}} value="{{contact.telPortable}}" {{/contact.telPortable}}
 					/>
 				<label for="fonction">Fonction :</label>
-				<input type="texte" name="fonction"
+				<input type="text" name="fonction"
 					{{#contact.fonction}} value="{{contact.fonction}}" {{/contact.fonction}}
 					/>
+				<br>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
 			</div>
 		</form>		
 		<hr/>

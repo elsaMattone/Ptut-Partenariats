@@ -100,7 +100,7 @@ INSERT INTO Partenaire(id_Partenaire, raison_sociale, adresse, ville, region, co
 	(1009, 'Clinique de Castres' , '48 avenue des hortensias', 'Castres','Tarn','81100','France', '02.36.58.97.41','contacts@cliniqueCastres.fr'),
 	(1010, 'Entreprise D' , '70 avenue Sun Tzu', 'Paris','Ile de France','75012','France', ' ','contacts@entrepriseD.com');
 
-INSERT INTO Contact (id_contact, nom, prenom, Mail, tel_fixe, tel_portable, fonction, partenaire) VALUES
+INSERT INTO Contact (id_contact, nom, prenom, mail, tel_fixe, tel_portable, fonction, partenaire) VALUES
 	(2001,'Dupont','Agnès', 'dupont.agnes@institut-esante.fr', ' ', '06.53.48.78.96', 'Responsable Informatique', 1001),
 	(2002, 'Dupuy' , 'Yvan', 'direction@ch-sabran.fr','05.36.96.36.58',' ','Directeur', 1002),
 	(2003, 'Dujardin', 'Stéphanie', 'rsi@chru-tls.com', '05.45.63.21.89', '07.89.45.12.36', 'Responsable Systemes d''Informations',1003),
@@ -118,7 +118,7 @@ INSERT INTO Contact (id_contact, nom, prenom, Mail, tel_fixe, tel_portable, fonc
 	(2015, 'Fournier', 'Stéphane', 'fournier.stephanie@entreprise.comm', ' ', '06.20.22.20.23', 'Chef de produits',1010),
 	(2016, 'Mercier', 'Laure', 'mercier.laure@entrepriseD.com', ' ', '06.20.01.20.24', 'Chef de projets',1010);
 
-INSERT INTO Commentaire(ID_Commentaire, Texte, Date_Commentaire, Auteur) VALUES 
+INSERT INTO Commentaire(ID_Commentaire, Texte, date_Commentaire, Auteur) VALUES 
 	(4001,'Prise de contact au Winter Camp 2022', '2022-02-02', 'Admin'),
 	(4002, 'Toujours présents à tous les événements ', '2022-03-01', 'Admin');
 

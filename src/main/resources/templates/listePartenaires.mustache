@@ -1,19 +1,21 @@
 
 {{>header}}
 		<h1>Liste des partenaires</h1>
-		<a href='add'>Ajouter un partenaire</a>
+		<a href='add'><input type="button" value="Ajouter un partenaire"></a>
 		
 		{{#message}}<h3>{{message}}</h3>{{/message}}				
 		<table>
-			<tr><th>ID</th><th>Raison sociale</th><th>Adresse</th><th>Téléphone</th><th>Mail</th><th>Contact au sein de la structure</th><th>Action</th></tr>
+			<tr><th>Raison sociale</th><th>Adresse</th><th>Ville</th><th>Région</th><th>Code Postal</th><th>Pays</th><th>Téléphone</th><th>Mail</th><th>Action</th></tr>
 			{{#partenaires}}
-				<tr>					
-					<td>{{idPartenaire}}</td>
-					<td>{{raisonSociale}}</td>
-					<td>{{adresse}}</td>					
-					<td>{{telephone}}</td>
-					<td>{{mailPartenaire}}</td>
-					<td>{{contacts}}</td>					
+				<tr>			
+					<td>{{#raisonSociale}} {{.}} {{/raisonSociale}}</td>
+					<td>{{adresse}}</td>
+					<td>{{ville}}</td>
+					<td>{{#region}} {{.}} {{/region}}</td>
+					<td>{{#codePostal}} {{.}} {{/codePostal}}</td>
+					<td>{{pays}}</td>					
+					<td>{{#telephone}} {{.}} {{/telephone}}</td>
+					<td>{{#mailPartenaire}} {{.}} {{/mailPartenaire}}</td>										
 					<td>
 						<a href='edit?idPartenaire={{idPartenaire}}'>Modifier</a> 
 						<a href='delete?idPartenaire={{idPartenaire}}'>Supprimer</a>

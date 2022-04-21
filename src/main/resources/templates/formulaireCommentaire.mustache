@@ -12,21 +12,21 @@
 				<input type="text" name="code" 
 					{{#commentaire.idCommentaire}} value="{{commentaire.idCommentaire}}" {{/commentaire.idCommentaire}}
 					readonly="readonly" placeholder="auto-généré, nom modifiable"/>
-				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
-			</div>
-			<div class="column">
+				
+			
 				<label for="texte">Texte</label>
 				<input type="text" name="texte" 
 					{{#commentaire.texte}} value="{{commentaire.texte}}" {{/commentaire.texte}}
 					/>				
-				<label for="description">Date:</label>
-				<input type="date" name="description"
+				<label for="date">Date:</label>
+				<input type="date" name="date"
 					{{#commentaire.date_Commentaire}} value="{{commentaire.date_Commentaire}}" {{/commentaire.date_Commentaire}}
 					/>
 				<label for="auteur">Auteur :</label>
 				<input type="text" name="auteur"
 					{{#commentaire.auteur}} value="{{commentaire.auteur}}" {{/commentaire.auteur}}
 					/>
+				<input type="submit" value="Enregistrer" /> <input type="reset" value="Réinitialiser" />
 			</div>
 		</form>		
 		<hr/>

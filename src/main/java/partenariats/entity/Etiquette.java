@@ -48,8 +48,7 @@ public class Etiquette implements Serializable {
 	@Basic(optional = false)
 	@NonNull // lombok
 	@NotNull // Java validation
-	@Size(min = 1, max = 40)
-	// Spécifications de la colonne dans la table relationnelle
+	@Size(min = 1, max = 40)	
 	@Column(nullable = false, unique = true, length = 40)
 	private String intitule;
 
@@ -65,23 +64,7 @@ public class Etiquette implements Serializable {
 	@ToString.Exclude
 	@ManyToMany(cascade= CascadeType.MERGE)
 	@JoinTable(name="etiquette_partenaire", joinColumns = @JoinColumn(name="idEtiquette"), inverseJoinColumns = @JoinColumn(name="idPartenaire"))
-	private List<Partenaire> partenaires; 
-
-	//@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
-    //private Set<Role> roles;
-	
-
-	/*
-	 * @JsonIgnore // Ne pas inclure dans le format JSON
-	 * 
-	 * @XmlTransient // Ne pas inclure dans le format XML
-	 * 
-	 * @ToString.Exclude // Ne pas inclure dans le toString
-	 * 
-	 * @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH}, mappedBy =
-	 * "categorie")
-	 * private List<Produit> produits;
-	 */
+	private List<Partenaire> partenaires; 	
 
 	@Override
 	public int hashCode() {

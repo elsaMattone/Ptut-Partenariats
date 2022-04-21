@@ -21,6 +21,7 @@ public class CommentaireController {
     @Autowired
 	private CommentaireRepository dao;
 
+
 	
 	@GetMapping(path = "show")
 	public	String afficheToutesLesCategories(Model model) {
@@ -41,36 +42,34 @@ public class CommentaireController {
 		return "formulaireCommentaire";
 	}
 
-	@PostMapping(path = "save")
+	/*@PostMapping(path = "save")
 	public String ajouteUnCommentairePuisMontreLaListe(Commentaire commentaire) {
 		
 		dao.save(commentaire);
 		
-		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+		return "redirect:/partenariats/commentaire/show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
 	}
 
 	@GetMapping(path = "delete")
 	public String supprimeUneCategoriePuisMontreLaListe(@RequestParam("idCommentaire") Commentaire commentaire) {
 		dao.delete(commentaire); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)		
-		return "redirect:show"; // on se redirige vers l'affichage de la liste
-	}
+		return "redirect:/partenariats/commentaire/show"; // on se redirige vers l'affichage de la liste
+	}*/
         
-	/*@PostMapping(path = "save")
+	@PostMapping(path = "save")
 	public String ajouteUnCommentairePuisMontreLaListe(Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
 			dao.save(commentaire);
 			message = "Le commentaire a bien été enregistré !";
 		}catch (DataIntegrityViolationException e){
-			message = "ERREUR : le commentaire " + commentaire.getTexte() + "existe déjà ! ";
+			message = "ERREUR : le commentaire " + commentaire.getTexte() + " existe déjà ! ";
 		}
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
-	}	*/
+	}
 
-
-
-	/*@GetMapping(path = "delete")
+	@GetMapping(path = "delete")
 	public String supprimeUneCategoriePuisMontreLaListe(@RequestParam("idCommentaire") Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
@@ -81,5 +80,5 @@ public class CommentaireController {
 		}
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:show"; // on se redirige vers l'affichage de la liste
-	}*/
+	}
 }

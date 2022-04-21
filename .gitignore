@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+src/main/resources/static/index.html
+src/main/resources/static/index.html
+src/main/resources/templates/listePartenaires.mustache

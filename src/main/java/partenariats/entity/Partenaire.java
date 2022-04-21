@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 //import lombok.NonNull;
 //import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -41,12 +42,29 @@ public class Partenaire implements Serializable{
 	@Column(nullable = false)
 	private Integer idPartenaire;
 
-	@NotNull
+	@NonNull
+	@Column(name="raison_sociale")
 	private String raisonSociale;
 
-	@Embedded
-	private AdressePostale adresse;
-	/* faire sans adresse postale  pbm à l'affichage */
+	@Size(max = 60)
+	@Column(length = 60)
+	private String adresse;
+
+	@Size(max = 15)
+	@Column(length = 15)
+	private String ville;
+
+	@Size(max = 25)
+	@Column(length = 25)
+	private String region;
+
+	@Size(max = 10)
+	@Column(length = 10)
+	private String codePostal;
+
+	@Size(max = 15)
+	@Column(length = 15)
+	private String pays;
 
 	@Size(max = 24)
 	@Column(length = 24)

@@ -1,0 +1,82 @@
+
+{{>header}}
+	<form>
+		
+		<div class="column">
+			<label for="idEtiquette">Choisissez l'étiquette à afficher</label>
+			
+			<select name='idEtiquette' onchange='this.form.submit()'>
+					
+				{{#etiquettes}}
+					<option value="{{idEtiquette}}">{{intitule}}</option>
+				{{/etiquettes}}
+			</select>
+		</div>
+	</form>
+	<h2>Partenaire par étiquette <em>{{selected.intitule}}</em></h2>
+	
+	<table>
+		<tr>
+			<th>Nom</th>
+			<th>Adresse</th>
+			<th>Ville</th>
+			<th>Region</th>
+			<th>Code postal</th>
+			<th>Pays</th>
+			<th>Telephone</th>
+			<th>Mail</th>
+		</tr>
+		
+		{{#selected.partenaires}}
+			<tr>
+				<td>{{raisonSociale}}</td>
+				<td>{{adresse}}</td>
+				<td>{{ville}}</td>
+				<td>{{region}}</td>
+				<td>{{codePostal}}</td>
+				<td>{{pays}}</td>
+				<td>{{telephone}}</td>
+				<td>{{mailPartenaire}}</td>				
+			</tr>
+		{{/selected.partenaires}}
+		
+		{{^selected.partenaires}}
+			<tr>
+				<td colspan="8">Aucun produit dans cette catégorie</td>
+			</tr>
+		{{/selected.partenaires}}
+	</table>
+
+	<h2>Contact par étiquette <em>{{selected.intitule}}</em></h2>
+	<table>
+		<tr>
+			<th>Nom</th>
+			<th>Prénom</th>
+			<th>Telephone Fixe</th>
+			<th>Telephone Portable</th>
+			<th>Mail</th>
+			<th>Fonction</th>
+		</tr>
+	
+		{{#selected.contacts}}
+			<tr>
+				<td>{{nom}}</td>
+				<td>{{prenom}}</td>
+				<td>{{telFixe}}</td>
+				<td>{{telPortable}}</td>
+				<td>{{mail}}</td>
+				<td>{{fonction}}</td>					
+			</tr>
+		{{/selected.contacts}}
+		
+		{{^selected.contacts}}
+			<tr>
+				<td colspan="6">Aucun produit dans cette catégorie</td>
+			</tr>
+		{{/selected.contacts}}
+	</table>
+
+	<hr/>
+	<a  href="/">Retour au menu</a>
+			
+{{>header}}

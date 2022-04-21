@@ -49,20 +49,20 @@ public class ContactController {
 			message = "ERREUR : le contact " + contact.getNom()+' '+contact.getPrenom() + "existe déjà !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; 
+		return "redirect:/partenariats/contact/show"; 
 	}
 	
 	@GetMapping(path = "delete")
 	public String supprimeUneContactPuisMontreLaListe(@RequestParam("idContact") Contact contact, RedirectAttributes redirectInfo) {
 		String message;
 		try{
-			dao.delete(contact); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)
+			dao.delete(contact);
 			message = "Le contact n'a pas été suppprimé";
 		}catch(DataIntegrityViolationException e){
 			message = "ERREUR : Impossible de supprimer le contact !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; // on se redirige vers l'affichage de la liste
+		return "redirect:/partenariats/contact/show"; 
 	}
     
 }

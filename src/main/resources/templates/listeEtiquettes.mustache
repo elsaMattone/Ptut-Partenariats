@@ -1,18 +1,17 @@
 
 {{>header}}
 		<h1>Liste des étiquettes</h1>		
-		<!--<a href='add'>Ajouter une étiquette</a>-->		
+		<a href='add'><input type="button" value="Ajouter une étiquette"></a>	
 		{{#message}}<h3>{{message}}</h3>{{/message}}				
 		<table>
-			<tr><th>ID</th><th>Intitule</th></tr>
+			<tr><th>Intitule</th></tr>
 			{{#etiquettes}}
-				<tr>					
-					<td>{{idEtiquette}}</td>
+				<tr>			
 					<td>{{intitule}}</td>					
-					<!--<td>
+					<td>
 						<a href='edit?idEtiquette={{idEtiquette}}'>Modifier</a> 
 						<a href='delete?idEtiquette={{idEtiquette}}'>Supprimer</a>
-					</td>-->
+					</td>
 				</tr>
 			{{/etiquettes}}
 		</table>
