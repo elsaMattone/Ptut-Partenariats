@@ -16,15 +16,19 @@ import partenariats.entity.Etiquette;
 @RequestMapping(path="/partenariats/etiquette/partenaire")
 public class PartenaireContactEtiquetteController {
     
+    /*Affiche une vue des contacts et les partenaires 
+    en fonction des étiquettes
+    partenaireConatct est la vue à afficher*/
     @Autowired
     private EtiquetteRepository dao;
 
     @GetMapping
     public String partenaireParEtiquette (@RequestParam(name="idEtiquette", required = false) Etiquette etiquette, Model model){
         List<Etiquette> lesEtiquettes = dao.findAll();
-        if(etiquette == null){
+        if(etiquette == null){//Si le partenaire est introuvable
             etiquette= lesEtiquettes.get(0);
         }
+        //infos transmisent à la vue
         model.addAttribute("etiquettes", lesEtiquettes);
         model.addAttribute("selected", etiquette);
         return "etiquettePartenaireContact";

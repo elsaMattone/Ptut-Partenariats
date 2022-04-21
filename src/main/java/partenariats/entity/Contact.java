@@ -37,6 +37,12 @@ import lombok.ToString;
 @XmlRootElement // Pour générer du XML
 public class Contact implements Serializable {
 
+	/*les classes-entités permettent d'auto-générer la création des tables
+	Ici c'est la table Contact
+	Liste des attributs : ID_Contact INT, Nom VARCHAR(30), Prenom VARCHAR(30), Mail VARCHAR(40), Tel_portable VARCHAR(24),
+	Tel_fixe VARCHAR(24), Fonction VARCHAR(40), Partenaire_contact INT ,
+	Vous pouvez retrouver la création des tables dans le fichier schema_sql.sql*/
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -72,6 +78,7 @@ public class Contact implements Serializable {
 	@Column(length = 40)
     private String fonction;
 
+	/*Un contact est rattaché à un partenaire(entreprise)*/
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="partenaire",referencedColumnName="idPartenaire")
     private Partenaire partenaire;
@@ -82,6 +89,7 @@ public class Contact implements Serializable {
 	@ManyToMany
 	private List<Commentaire> commentaires; 
 
+	/*Permets de générer des ID différents pour chaque contacts*/
     @Override
 	public int hashCode() {
 		int hash = 0;

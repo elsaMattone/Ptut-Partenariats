@@ -21,24 +21,27 @@ public class EtiquetteController {
 	@Autowired
 	private EtiquetteRepository dao;
 
+	//affiche tous les étiquettes et affiche la vue listeCommentaires.mustache 
 	@GetMapping(path = "show")
 	public	String afficheToutesLesEtiquettes(Model model) {
 		model.addAttribute("etiquettes", dao.findAll());
 		return "listeEtiquettes";
 	}			
 
+	//ajoute une étiquette et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "add")
 	public String montreLeFormulairePourAjout(@ModelAttribute("etiquette") Etiquette etiquette) {
 		return "formulaireEtiquette";
 	}	
 
+	//modifie une étiquette et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "edit")
 	public String montreLeFormulairePourEdition(@RequestParam("idEtiquette") Etiquette etiquette, Model model) {
 		model.addAttribute("etiquette", etiquette);
 		return "formulaireEtiquette";
 	}
         
-	
+	//enregistre les modifiactions ou l'ajout sauf s'il existe déjà et redirige vers la liste
 	@PostMapping(path = "save")
 	public String ajouteLaEtiquettePuisMontreLaListe(Etiquette etiquette, RedirectAttributes redirectInfo) {
 		String message;
@@ -59,6 +62,7 @@ public class EtiquetteController {
 			return "redirect:/partenariats/etiquette/show"; // on se redirige vers l'affichage de la liste
 	}*/
 
+	//supprime une étiquette sauf s'il ya une dépendance et redirige vers la vue précédente
 	@GetMapping(path = "delete")
 	public String supprimeUneEtiquettePuisMontreLaListe(@RequestParam("idEtiquette") Etiquette etiquette, RedirectAttributes redirectInfo) {
 		String message;

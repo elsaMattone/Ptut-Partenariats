@@ -37,6 +37,11 @@ import lombok.ToString;
 @XmlRootElement
 public class Etiquette implements Serializable {
 
+	/*les classes-entités permettent d'auto-générer la création des tables
+	Ici c'est la table Etiquette
+	Liste des attributs : ID_Etiquette INT NOT NULL PRIMARY KEY IDENTITY(13,1),  Intitule VARCHAR(40) NOT NULL UNIQUE
+	Vous pouvez retrouver la création des tables dans le fichier schema_sql.sql*/
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -52,6 +57,9 @@ public class Etiquette implements Serializable {
 	@Column(nullable = false, unique = true, length = 40)
 	private String intitule;
 
+	/*Relation ManyToMany avec contact 
+	Une étiquette peut être lié à plusieurs contact
+	et un contact peut avoir plusieurs étiquettes*/
 	@JsonIgnore
 	@XmlTransient
 	@ToString.Exclude
@@ -59,6 +67,9 @@ public class Etiquette implements Serializable {
 	@JoinTable(name="etiquette_contact", joinColumns = @JoinColumn(name ="idEtiquette"),inverseJoinColumns = @JoinColumn(name="idContact"))
 	private List<Contact> contacts; 
 
+	/*Relation ManyToMany avec partenaire 
+	Une étiquette peut être lié à plusieurs partenaire
+	et un partenaire peut avoir plusieurs étiquettes*/
 	@JsonIgnore
 	@XmlTransient
 	@ToString.Exclude
@@ -66,6 +77,7 @@ public class Etiquette implements Serializable {
 	@JoinTable(name="etiquette_partenaire", joinColumns = @JoinColumn(name="idEtiquette"), inverseJoinColumns = @JoinColumn(name="idPartenaire"))
 	private List<Partenaire> partenaires; 	
 
+	/*Permets de générer des ID différents pour chaque étiquettes*/
 	@Override
 	public int hashCode() {
 		int hash = 0;

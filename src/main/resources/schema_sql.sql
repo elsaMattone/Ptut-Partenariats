@@ -11,7 +11,7 @@ CREATE TABLE Partenaire(
 	Pays VARCHAR(15), 
 	Telephone VARCHAR(24) default NULL,
 	Mail_Partenaire VARCHAR(40)
-	--Personid int IDENTITY(1,1)
+
 	
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE Commentaire (
 	ID_Commentaire INT NOT NULL PRIMARY KEY IDENTITY(4003,1), 
 	Texte VARCHAR(255) DEFAULT NULL,
 	Date_Commentaire DATE NOT NULL,
-	Auteur VARCHAR(30) DEFAULT ('Marion')
+	Auteur VARCHAR(30) DEFAULT ('Admin')
 );
 
 CREATE TABLE PartenaireEtiquette (

@@ -34,3 +34,4 @@ build/
 src/main/resources/static/index.html
 src/main/resources/static/index.html
 src/main/resources/templates/listePartenaires.mustache
+src/main/java/partenariats/controller/ContactPartenaireController.java

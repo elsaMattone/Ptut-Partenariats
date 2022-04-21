@@ -34,6 +34,20 @@ import lombok.ToString;
 @XmlRootElement
 public class Partenaire implements Serializable{
 
+	/*les classes-entités permettent d'auto-générer la création des tables
+	Ici c'est la table Partenaire
+	Liste des attributs : 
+	ID_Partenaire INT NOT NULL  PRIMARY KEY IDENTITY(1011,1),	
+	Raison_Sociale VARCHAR(40) NOT NULL,
+	Adresse VARCHAR(60), 
+	Ville VARCHAR(15), 
+	Region VARCHAR(24), 
+	Code_postal CHAR(10), 
+	Pays VARCHAR(15), 
+	Telephone VARCHAR(24) default NULL,
+	Mail_Partenaire VARCHAR(40)
+	Vous pouvez retrouver la création des tables dans le fichier schema_sql.sql*/
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -85,7 +99,8 @@ public class Partenaire implements Serializable{
 
 	@ManyToMany
 	private List<Commentaire> commentaires; 
-	  
+	
+	/*Permets de générer des ID différents pour chaque partenaires*/
     @Override
 	public int hashCode() {
 		int hash = 0;

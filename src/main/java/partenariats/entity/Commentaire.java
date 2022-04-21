@@ -33,6 +33,11 @@ import lombok.ToString;
 @XmlRootElement
 public class Commentaire implements Serializable{
 
+	/*les classes-entités permettent d'auto-générer la création des tables
+	Ici c'est la table Commentaire
+	Liste des attributs : ID_Commentaire INT, Texte VARCHAR(255), Date_Commentaire DATE , Auteur VARCHAR(30)
+	Vous pouvez retrouver la création des tables dans le fichier schema_sql.sql*/
+
     private static final long serialVersionUID = 1L;
 
 	@Id 
@@ -53,6 +58,9 @@ public class Commentaire implements Serializable{
 	@Column(length = 40)
     private String auteur;
 
+	/*Relation ManyToMany avec contact 
+	Un commentaire peut être lié à plusieurs contact
+	et un contact peut avoir plusieurs commentaires*/
 	@JsonIgnore
 	@XmlTransient
 	@ToString.Exclude
@@ -60,6 +68,9 @@ public class Commentaire implements Serializable{
 	@JoinTable(name="commentaire_contact", joinColumns = @JoinColumn(name="idCommentaire"), inverseJoinColumns = @JoinColumn(name="idContact"))
 	private List<Contact> contacts; 
 
+	/*Relation ManyToMany avec partenaire 
+	Un commentaire peut être lié à plusieurs partenaire
+	et un partenaire peut avoir plusieurs commentaires*/
 	@JsonIgnore
 	@XmlTransient
 	@ToString.Exclude
@@ -67,6 +78,7 @@ public class Commentaire implements Serializable{
 	@JoinTable(name="commentaire_partenaire", joinColumns = @JoinColumn(name="idCommentaire"), inverseJoinColumns = @JoinColumn(name="idPartenaire"))
 	private List<Partenaire> partenaires;
 
+	/*Permets de générer des ID différents pour chaque commentaires*/
     @Override
 	public int hashCode() {
 		int hash = 0;

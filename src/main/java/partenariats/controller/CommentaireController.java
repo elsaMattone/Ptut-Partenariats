@@ -22,20 +22,20 @@ public class CommentaireController {
 	private CommentaireRepository dao;
 
 
-	
+	//affiche tous les commentaires et affiche la vue listeCommentaires.mustache 
 	@GetMapping(path = "show")
 	public	String afficheToutesLesCategories(Model model) {
 		model.addAttribute("commentaires", dao.findAll());
 		return "listeCommentaires";
 	}	
 		
-
+	//ajoute un commentaire et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "add")
 	public String montreLeFormulairePourAjout(@ModelAttribute("commentaire") Commentaire commentaire) {
 		return "formulaireCommentaire";
 	}
 	
-
+	//modifie un commentaire et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "edit")
 	public String montreLeFormulairePourEdition(@RequestParam("idCommentaire") Commentaire commentaire, Model model) {
 		model.addAttribute("commentaire", commentaire);
@@ -55,7 +55,8 @@ public class CommentaireController {
 		dao.delete(commentaire); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)		
 		return "redirect:/partenariats/commentaire/show"; // on se redirige vers l'affichage de la liste
 	}*/
-        
+    
+	//enregistre les modifiactions ou l'ajout sauf s'il existe déjà et redirige vers la liste
 	@PostMapping(path = "save")
 	public String ajouteUnCommentairePuisMontreLaListe(Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
@@ -66,19 +67,20 @@ public class CommentaireController {
 			message = "ERREUR : le commentaire " + commentaire.getTexte() + " existe déjà ! ";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+		return "redirect:/partenariats/commentaire/show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
 	}
 
+	//supprime un commentaire sauf s'il ya une dépendance et redirige vers la vue précédente
 	@GetMapping(path = "delete")
 	public String supprimeUneCategoriePuisMontreLaListe(@RequestParam("idCommentaire") Commentaire commentaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
-			dao.delete(commentaire); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)
+			dao.delete(commentaire); 
 			message = "Le commentaire a été supprimé !";
 		}catch(DataIntegrityViolationException e){
 			message = "ERREUR : Impossible de supprimer le commentaire !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:show"; // on se redirige vers l'affichage de la liste
+		return "redirect:/partenariats/commentaire/show"; 
 	}
 }

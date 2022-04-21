@@ -21,6 +21,7 @@ public class PartenaireController {
     @Autowired
 	private PartenaireRepository dao;
 
+	//affiche tous les partenaires et affiche la vue listeCommentaires.mustache 
 	public PartenaireController(PartenaireRepository dao){
 		this.dao=dao;
 	}
@@ -31,11 +32,13 @@ public class PartenaireController {
 		return "listePartenaires";
 	}			
 	
+	//ajoute un partenaire et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "add")
 	public String montreLeFormulairePourAjout(@ModelAttribute("partenaire") Partenaire partenaire) {
 		return "formulairePartenaire";
 	}	
 	
+	//modifie un partenaire et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "edit")
 	public String montreLeFormulairePourEdition(@RequestParam("idPartenaire") Partenaire partenaire, Model model) {
 		model.addAttribute("partenaire", partenaire);
@@ -55,6 +58,7 @@ public class PartenaireController {
 		return "redirect:/partenariats/partenaire/show"; // on se redirige vers l'affichage de la liste
 	}*/
 	
+	//enregistre les modifiactions ou l'ajout sauf s'il existe déjà et redirige vers la liste
 	@PostMapping(path = "save")
 	public String ajouteLaPartenairePuisMontreLaListe(Partenaire partenaire, RedirectAttributes redirectInfo) {
 		String message;
@@ -62,23 +66,22 @@ public class PartenaireController {
 			dao.save(partenaire);
 			message = "Le partenaire a bien été enregistré";
 		}catch (DataIntegrityViolationException e){
-			message = "ERREUR : le partenaire " + partenaire.getRaisonSociale() + "existe déjà !";
+			message = "ERREUR : le partenaire " + partenaire.getRaisonSociale() + " existe déjà !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:partenariats/partenaire/show"; 
 	}
-	
+
+	//supprime un partenaire sauf s'il ya une dépendance et redirige vers la vue précédente	
 	@GetMapping(path = "delete")
 	public String supprimeUnePartenairePuisMontreLaListe(@RequestParam("idPartenaire") Partenaire partenaire, RedirectAttributes redirectInfo) {
 		String message;
 		try{
-			dao.delete(partenaire); // Ici on peut avoir une erreur (Si il y a des produits dans cette catégorie par exemple)
+			dao.delete(partenaire); 
 			message = "Le partenaire n'a pas été suppprimé";
 		}catch(DataIntegrityViolationException e){
 			message = "ERREUR : Impossible de supprimer le partenaire !";
 		}
 		redirectInfo.addFlashAttribute("message", message);
-		return "redirect:partenariats/partenaire/show"; // on se redirige vers l'affichage de la liste
-	}
-    
+		return "redirect:partenariats/partenaire/show"; 
 }

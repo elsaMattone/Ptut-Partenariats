@@ -21,24 +21,27 @@ public class ContactController {
     @Autowired
 	private ContactRepository dao;
 
-	
+	//affiche tous les contacts et affiche la vue listeCommentaires.mustache 
 	@GetMapping(path = "show")
 	public	String afficheToutesLesContacts(Model model) {
 		model.addAttribute("contacts", dao.findAll());
 		return "listeContacts";
 	}			
 	
+	//ajoute un contact et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "add")
 	public String montreLeFormulairePourAjout(@ModelAttribute("contact") Contact contact) {
 		return "formulaireContact";
 	}	
 	
+	//modifie un contact et affiche la vue formulaireCommentaire.mustache
 	@GetMapping(path = "edit")
 	public String montreLeFormulairePourEdition(@RequestParam("idContact") Contact contact, Model model) {
 		model.addAttribute("contact", contact);
 		return "formulaireContact";
 	}        
 	
+	//enregistre les modifiactions ou l'ajout sauf s'il existe déjà et redirige vers la liste
 	@PostMapping(path = "save")
 	public String ajouteLaContactPuisMontreLaListe(Contact contact, RedirectAttributes redirectInfo) {
 		String message;
@@ -51,7 +54,8 @@ public class ContactController {
 		redirectInfo.addFlashAttribute("message", message);
 		return "redirect:/partenariats/contact/show"; 
 	}
-	
+
+	//supprime un contact sauf s'il ya une dépendance et redirige vers la vue précédente	
 	@GetMapping(path = "delete")
 	public String supprimeUneContactPuisMontreLaListe(@RequestParam("idContact") Contact contact, RedirectAttributes redirectInfo) {
 		String message;
